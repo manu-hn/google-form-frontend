@@ -5,13 +5,18 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from "@/constants/firebase";
 import { validate } from "@/constants/Constants";
 import { initialValues } from "@/constants/StateValues";
+import useSubmitFormData from "@/utils/hooks/useSubmitFormData";
+import { useSelector } from "react-redux";
 
 const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }) => {
+    const { userInfo } = useSelector(store => store.user);
+    const { submitFormData } = useSubmitFormData();
     const formik = useFormik({
         initialValues,
         validate,
         onSubmit: values => {
-            console.log("Form submitted with values: ", values);  // Console log to check
+            
+            submitFormData({ ...values, loggedInEmail: userInfo?.email })
         },
     });
 
@@ -34,7 +39,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
                         resolve(downloadUrl);
-                        formik.setFieldValue(fieldId, downloadUrl); 
+                        formik.setFieldValue(fieldId, downloadUrl);
                         console.log(downloadUrl);
                     });
                 }
@@ -51,9 +56,9 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
     };
 
     return (
-        <div className="w-3/5 ">
+        <div className="w-3/4 md:w-[55%] ">
             <form onSubmit={formik.handleSubmit}>
-                
+
                 {pageTitle && (
                     <h1 className="w-full bg-[#83D3E0] font-bold h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
                 )}
@@ -68,7 +73,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         error={formik.errors.emailChecked}
                         touched={formik.touched.emailChecked}
                         required={true}
-                        classNames="w-[2rem] h-[2rem] bg-[#008DA2]"
+                        classNames="md:w-[1.75rem] md:h-[1.75rem] bg-[#008DA2] placeholder:text-[1.25rem] md:placeholder:text-[1rem]"
                         containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg"
                     />
                 )}
@@ -89,7 +94,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         required={field.required}
                         classNames="my-2 border-b-2 w-2/4 outline-none focus:border-b-[#008DA2] p-2"
                         containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg"
-                        handleStoreImage={handleStoreImage} 
+                        handleStoreImage={handleStoreImage}
                     />
                 ))}
                 <div>
@@ -122,7 +127,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         </button>
                     )}
                     <input
-                        type="range"
+                        type="range" 
                         value={index}
                         min={0}
                         max={docsLength - 1}

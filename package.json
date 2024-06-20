@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "embla-carousel-react": "^8.1.5",
+    "firebase": "^10.11.0",
     "formik": "^2.4.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

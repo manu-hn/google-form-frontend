@@ -236,10 +236,11 @@ export const IDENTIFICATION_DOCUMENTS = [
     },
     {
         id: 'adhaarCardNumber',
-        label: 'Passport Number',
+        label: 'Adhaar Card Number',
         type: 'text',
         placeholder: 'Your Answer',
         description: `Description: Enter your Aadhaar card number.`,
+        required : true,
 
     },
     {
@@ -248,6 +249,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'file',
         placeholder: 'Your Answer',
         description: `Description: If you selected 'Yes' above, Upload a copy of  your Aadhaar Card.`,
+        required : true,
 
     },
     {

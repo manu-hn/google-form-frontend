@@ -4,6 +4,7 @@ import ImageUploader from './ImageUploader';
 const InputField = ({ id, type, label, placeholder, value, options, onChange, onBlur, 
     error, touched, classNames, required, containerClasses, description, handleStoreImage }) => {
 
+
     const renderInput = () => {
         switch (type) {
             case 'text':

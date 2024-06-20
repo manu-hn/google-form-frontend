@@ -1,7 +1,11 @@
 import { DESCRIPTIVE_HEADER_TEXT, HEAD_TEXT, REQUIRED_INDICATE_TEXT, SUBMIT_DESCRIPTIVE_TEXT } from "@/constants/Constants";
 import GoogleFormImage from "../../assets/images/Google Form Image.png";
-
+import GoogleOAuth from "../auth/GoogleOAuth";
+import { useSelector } from "react-redux";
 const HeaderSection = () => {
+
+    const { userInfo } = useSelector((store) => store.user);
+   
     return (
         <section className=" flex flex-col items-center justify-center my-4 text-[1vw]">
             <img src={GoogleFormImage} alt="Google Form Image" className="w-3/5 rounded-md" />
@@ -13,7 +17,10 @@ const HeaderSection = () => {
 
                 <span className="block w-full h-[0.04em] my-3 bg-[#d3d2d2]"></span>
 
-                <div className="px-4 mb-4">Manuhulikere</div>
+                <div className="px-4 mb-4 flex ">
+                    <p className="font-bold text-gray-500 mr-4">{userInfo?.email}</p>
+                    <GoogleOAuth title="Switch Accounts" />
+                </div>
 
                 <h4 className="font-[400] text-[#343434] mx-4">{SUBMIT_DESCRIPTIVE_TEXT}</h4>
                 <span className="block w-full h-[0.04em] my-3 bg-[#d3d2d2]"></span>

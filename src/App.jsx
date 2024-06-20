@@ -1,18 +1,21 @@
 
 import Container from '@components/Container';
+import { PersistGate } from "redux-persist/integration/react";
 
 import './App.css'
 import { Provider } from 'react-redux';
-import appStore from "@/store/store.js";
+import appStore, { persistor } from "@/store/store.js";
 
 
 function App() {
 
   return (
     <Provider store={appStore}>
-      
-      <Container />
-     
+      <PersistGate persistor={persistor} loading={null}>
+
+        <Container />
+      </PersistGate>
+
     </Provider>
   )
 }

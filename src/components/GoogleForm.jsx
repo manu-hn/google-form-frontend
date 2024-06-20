@@ -53,6 +53,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
     return (
         <div className="w-3/5 ">
             <form onSubmit={formik.handleSubmit}>
+                
                 {pageTitle && (
                     <h1 className="w-full bg-[#83D3E0] font-bold h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
                 )}

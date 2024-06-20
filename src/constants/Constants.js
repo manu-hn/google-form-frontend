@@ -160,10 +160,9 @@ export const FIRST_PAGE_FIELDS = [
     {
         id: "bloodGroup",
         label: "Blood Group",
-        type: "radio",
+        type: "text",
         placeholder: "Your Answer",
         description: "Description: Enter your blood group. Format: O+, A-, etc.",
-        options: ['Option 1'],
         required: true,
 
     },
@@ -180,6 +179,7 @@ export const ADDRESS_INFORMATION_FIELDS = [
                         City
                         State
                         Postal Code`,
+        required: true,
     },
     {
         id: "permanentResidentialAddress",
@@ -190,6 +190,7 @@ export const ADDRESS_INFORMATION_FIELDS = [
                         City
                         State
                         Postal Code`,
+        required: true,
     },
     {
         id: "currentLocation",
@@ -197,6 +198,7 @@ export const ADDRESS_INFORMATION_FIELDS = [
         type: "text",
         placeholder: "Your Answer",
         description: `Description: Enter your current city of residence.`,
+        required: true,
     },
     {
         id: "preferredLocation",
@@ -204,6 +206,7 @@ export const ADDRESS_INFORMATION_FIELDS = [
         type: "text",
         placeholder: "Your Answer",
         description: `Description: Enter your preferred city of residence.`,
+        required: true,
     },
 
 ]
@@ -217,6 +220,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         placeholder: 'Your Answer',
         description: `Description: Select 'Yes' if you have a passport, otherwise select 'No'.'`,
         options: ['YES', 'NO'],
+        required: true,
     },
     {
         id: 'passportNumber',
@@ -224,6 +228,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'text',
         placeholder: 'Your Answer',
         description: `Description: If you selected 'Yes' above, enter your passport number.`,
+        required: false,
 
     },
     {
@@ -232,6 +237,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'file',
         placeholder: 'Your Answer',
         description: `Description: If you selected 'Yes' above, Upload a copy of  your passport.`,
+        required: false,
 
     },
     {
@@ -240,7 +246,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'text',
         placeholder: 'Your Answer',
         description: `Description: Enter your Aadhaar card number.`,
-        required : true,
+        required: true,
 
     },
     {
@@ -249,7 +255,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'file',
         placeholder: 'Your Answer',
         description: `Description: If you selected 'Yes' above, Upload a copy of  your Aadhaar Card.`,
-        required : true,
+        required: true,
 
     },
     {
@@ -258,6 +264,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'text',
         placeholder: 'Your Answer',
         description: `Description: Enter your PAN card number.`,
+        required: true,
 
     },
     {
@@ -266,6 +273,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'file',
         placeholder: 'Your Answer',
         description: `Description: If you selected 'Yes' above, Upload a copy of  your PAN Card.`,
+        required: false,
 
     },
     {
@@ -274,7 +282,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'radio',
         placeholder: 'Your Answer',
         description: `Description: Enter your driving license number if applicable.`,
-        options: ['Option 1'],
+        options: ['YES', 'NO'],
 
     },
     {
@@ -291,7 +299,7 @@ export const IDENTIFICATION_DOCUMENTS = [
         type: 'radio',
         placeholder: 'Your Answer',
         description: `Description: Enter your Voter ID card number if applicable.`,
-        options: ['Option 1'],
+        options: ['YES', 'NO'],
 
     },
     {
@@ -373,6 +381,13 @@ export const PROFESSIONAL_LINKS_AND_DOCUMENTS = [
 
 
 export const EDUCATIONAL_DETAILS = [
+    {
+        id: "paragraph",
+        label: "",
+        type: "paragraph",
+        placeholder: "",
+        description: "Please share details of your highly qualification only",
+    },
     {
         id: `educationCourse`,
         label: `Education: Course`,

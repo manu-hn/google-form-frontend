@@ -1,4 +1,5 @@
 
+
 export const initialValues = {
     emailChecked: false,
     firstName: '',
@@ -56,5 +57,15 @@ export const initialValues = {
 
 
 }
+
+export const config = {
+    headers: {
+
+        'Content-type': 'application/json',
+
+    }
+}
+
+
 
 

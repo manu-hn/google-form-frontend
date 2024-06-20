@@ -7,7 +7,7 @@ const HeaderSection = () => {
     const { userInfo } = useSelector((store) => store.user);
    
     return (
-        <section className=" flex flex-col items-center justify-center my-4 text-[1vw]">
+        <section className="w-[92%] flex flex-col items-center justify-center my-4 text-[1vw]">
             <img src={GoogleFormImage} alt="Google Form Image" className="w-3/5 rounded-md" />
             <div className="w-3/5 bg-white mt-3 rounded-lg overflow-hidden">
                 <span className="block w-full h-3  bg-[#83D3E0]"></span>

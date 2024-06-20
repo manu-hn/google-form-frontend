@@ -1,10 +1,10 @@
 
-import Container from '@components/Container';
 import { PersistGate } from "redux-persist/integration/react";
 
 import './App.css'
 import { Provider } from 'react-redux';
 import appStore, { persistor } from "@/store/store.js";
+import Body from './Body';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <Provider store={appStore}>
       <PersistGate persistor={persistor} loading={null}>
 
-        <Container />
+        <Body />
       </PersistGate>
 
     </Provider>

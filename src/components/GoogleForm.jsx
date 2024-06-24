@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { useFormik } from "formik";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "@/constants/firebase";
-import { validate } from "@/constants/Constants";
+import { validate } from "@/constants/Config.js";
 import { initialValues } from "@/constants/StateValues";
 import useSubmitFormData from "@/utils/hooks/useSubmitFormData";
 import { useSelector } from "react-redux";
+import Button from "./elements/Button";
 
 const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }) => {
     const { userInfo } = useSelector(store => store.user);
@@ -15,7 +16,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
         initialValues,
         validate,
         onSubmit: values => {
-            
+
             submitFormData({ ...values, loggedInEmail: userInfo?.email })
         },
     });
@@ -97,42 +98,33 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         handleStoreImage={handleStoreImage}
                     />
                 ))}
-                <div>
-                    {index > 0 && (
-                        <button
-                            type="button"
-                            className="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
-                            disabled={index === 0}
-                            onClick={handlePrevChange}
-                        >
-                            Back
-                        </button>
+                <div className="flex">
+                    {index > 0 && (<Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
+                        handleClick={handlePrevChange} isDisabled={index === 0} title="Back" />
                     )}
                     {index < docsLength - 1 && (
-                        <button
-                            type="button"
-                            className="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
-                            disabled={index === docsLength - 1}
-                            onClick={handleNextChange}
-                        >
-                            Next
-                        </button>
+                        <Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
+                            handleClick={handleNextChange} isDisabled={index === docsLength - 1} title="Next" />
+
                     )}
                     {index === docsLength - 1 && (
-                        <button
-                            type="submit"
-                            className="bg-[#1496A9] px-10 py-2 rounded-md mx-4 text-white font-[500]"
-                        >
+                        <button type="submit"
+                            className="bg-[#1496A9] px-10 py-2 rounded-md mx-4 text-white font-[500]">
                             Submit
                         </button>
                     )}
-                    <input
-                        type="range" 
-                        value={index}
-                        min={0}
-                        max={docsLength - 1}
-                        onChange={(e) => setIndexValue(parseInt(e.target.value))}
-                    />
+                    <div className="flex items-center gap-4">
+                        <input
+                            type="range"
+                            value={index}
+                            min={0}
+                            max={docsLength - 1}
+                            onChange={(e) => setIndexValue(parseInt(e.target.value))}
+                        />
+                        <span>
+                            Page {index + 1}  of {docsLength}
+                        </span>
+                    </div>
                 </div>
             </form>
         </div>

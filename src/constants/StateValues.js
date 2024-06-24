@@ -49,6 +49,37 @@ export const initialValues = {
     proofOfCertification: '',
     dateOfJoin: '',
     fresher: '',
+    totalExperience : '',
+    organizationName : '',
+    jobTitle : '',
+    empStartDate : '',
+    empEndDate : '',
+    rolesAndResponsibilities : '',
+    reasonForLeaving : '',
+    currentCTC: '',
+    expectedCTC: '',
+    noticePeriod: '',
+    salarySlips : '',
+    bankStatements : '',
+    offerLetter: '',
+    incrementLetter: '',
+    experienceCertificate : '',
+    servingNoticePeriod : '',
+    lastWorkingDate : '',
+    anyExistingOffers : '',
+    existingOfferOrganizationName : '',
+    proofOfExistingOffer : '',
+    haveYouAcceptedTheOffer : '',
+    dateAcceptedTheOffer : '',
+    proposedCTC : '',
+    referenceContactPersonName : '',
+    referenceContactPersonDesignation : '',
+    referenceContactPersonContact : '',
+    referenceContactPersonEmailID : '',
+    referenceContactPersonProfessionalRelationship : '',
+    referenceCheckDate : '',
+    employmentVerificationConsent: '',
+    authorizationToContactReferences: '',
     backgroundChecks: '',
     drugAndAlcoholTest: '',
     criminalCases: '',
@@ -58,13 +89,6 @@ export const initialValues = {
 
 }
 
-export const config = {
-    headers: {
-
-        'Content-type': 'application/json',
-
-    }
-}
 
 
 

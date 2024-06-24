@@ -1,4 +1,4 @@
-import { DESCRIPTIVE_HEADER_TEXT, HEAD_TEXT, REQUIRED_INDICATE_TEXT, SUBMIT_DESCRIPTIVE_TEXT } from "@/constants/Constants";
+import { DESCRIPTIVE_HEADER_TEXT, HEAD_TEXT, REQUIRED_INDICATE_TEXT, SUBMIT_DESCRIPTIVE_TEXT } from "@/constants/Config.js";
 import GoogleFormImage from "../../assets/images/Google Form Image.png";
 import GoogleOAuth from "../auth/GoogleOAuth";
 import { useSelector } from "react-redux";

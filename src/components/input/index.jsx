@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import useRenderInput from '@/utils/hooks/useRenderInput';
 
 const InputField = ({ id, type, label, placeholder, value, options, onChange, onBlur,
-    error, touched, classNames, required, containerClasses, description, handleStoreImage }) => {
+    error, touched, classNames, required, containerClasses, description, handleStoreImage, fieldValues }) => {
 
     const { renderInput } = useRenderInput()
     const { userInfo } = useSelector((store) => store.user)
@@ -12,7 +12,7 @@ const InputField = ({ id, type, label, placeholder, value, options, onChange, on
         <section className={containerClasses}>
             <label htmlFor={id} className='text-[0.85rem] md:text-[1.15rem]'>{label} {required && <span className='text-red-500'>*</span>}</label>
             <p className='mb-4 mt-1 text-[0.65rem] md:text-[0.85rem]'>{description}</p>
-            {renderInput(type, classNames, id, value, placeholder, onChange, onBlur, options, handleStoreImage, userInfo?.email)}
+            {renderInput(type, classNames, id, value, placeholder, onChange, onBlur, options, handleStoreImage, userInfo?.email, fieldValues)}
             {error && touched && <p className="text-red-500 text-[0.7rem] flex">
                 <span className=' w-5 h-5 text-center rounded-full border-[2.5px] flex items-center justify-center text-[0.85rem] font-bold border-red-500 mr-4'>!</span>{error}</p>}
         </section>
@@ -34,7 +34,8 @@ InputField.propTypes = {
     error: PropTypes.string,
     touched: PropTypes.bool,
     required: PropTypes.bool,
-    handleStoreImage: PropTypes.func
+    handleStoreImage: PropTypes.func,
+    fieldValues : PropTypes.object,
 };
 
 export default InputField;

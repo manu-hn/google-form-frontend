@@ -1,6 +1,6 @@
 
 import { PersistGate } from "redux-persist/integration/react";
-
+import { SnackbarProvider } from 'notistack'
 import './App.css'
 import { Provider } from 'react-redux';
 import appStore, { persistor } from "@/store/store.js";
@@ -12,8 +12,10 @@ function App() {
   return (
     <Provider store={appStore}>
       <PersistGate persistor={persistor} loading={null}>
+        <SnackbarProvider>
 
-        <Body />
+          <Body />
+        </SnackbarProvider>
       </PersistGate>
 
     </Provider>

@@ -4,7 +4,7 @@ import GoogleOAuth from "./GoogleOAuth"
 const PleaseSignIn = () => {
     return (
         <section className="w-full h-[100vh] flex items-center justify-center ">
-            <div className="h-[25rem] w-[55rem] flex  justify-around items-center border bg-[#fdfcfc] rounded-2xl">
+            <div className="h-[25rem] w-[60%] flex  justify-around items-center border bg-[#fdfcfc] rounded-2xl">
                 <div>
 
                     <p className="text-orange-800">It seems like you are not Signed in, </p>

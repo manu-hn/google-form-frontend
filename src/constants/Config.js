@@ -52,9 +52,7 @@ export const validate = values => {
 
 export const config = {
     headers: {
-
         'Content-type': 'application/json',
-
     }
 }
 

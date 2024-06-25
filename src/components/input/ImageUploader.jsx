@@ -5,6 +5,7 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
     const [files, setFiles] = useState(null);
     const fileRef = useRef(null);
     const [imagePercentage, setImagePercentage] = useState(null);
+   
 
     useEffect(() => {
         if (files) {
@@ -40,8 +41,9 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
 ImageUploader.propTypes = {
     id: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['text', 'number', 'date', 'radio', 'file', 'checkbox']).isRequired,
-    fieldId: PropTypes.string.isRequired, // Add fieldId prop
-    handleStoreImage: PropTypes.func.isRequired, // Add handleStoreImage prop
+    fieldId: PropTypes.string.isRequired, 
+    handleStoreImage: PropTypes.func.isRequired,
+   
 };
 
 export default ImageUploader;

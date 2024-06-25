@@ -645,7 +645,7 @@ export const CURRENT_OFFERS = [
         placeholder: `Your Answer`,
         description: ``,
         required: true,
-        options: ['YES', "NO", 'MAYBE'],
+       
 
     },
     {

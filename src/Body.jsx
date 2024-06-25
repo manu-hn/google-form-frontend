@@ -4,6 +4,8 @@ import Container from "./components/Container";
 import PrivateRoute from "./components/auth/PrivateRoute";
 
 const Body = () => {
+
+    
     return (
         <div className="bg-[#E6F6F9]">
             <BrowserRouter>

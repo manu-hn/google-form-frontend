@@ -18,7 +18,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
     const storeFormData = async (values, currentIndex) => {
         try {
             await storeData({ id: 'formData', formValues: values, index: currentIndex });
-            console.log('Data stored:', { id: 'formData', formValues: values, index: currentIndex });
+            // console.log('Data stored:', { id: 'formData', formValues: values, index: currentIndex });
         } catch (error) {
             console.error('Error storing form data:', error);
         }
@@ -41,12 +41,11 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
     useEffect(() => {
         const fetchData = async () => {
             const savedData = await loadData();
-            console.log('Loaded data:', savedData);
+            // console.log('Loaded data:', savedData);
 
             if (savedData.length > 0) {
-                console.log('hii')
+               
                 formik.setValues(savedData[savedData.length - 1].formValues);
-
                 setIndexValue(savedData[0].index);
             }
         };
@@ -120,6 +119,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         required={true}
                         classNames="md:w-[1.75rem] md:h-[1.75rem] bg-[#008DA2] placeholder:text-[1.25rem] md:placeholder:text-[1rem]"
                         containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg"
+                        fieldValues={formik.values}
                     />
                 )}
                 {formDetails.map((field) => (
@@ -143,6 +143,7 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                         classNames="my-2 border-b-2 w-2/4 outline-none focus:border-b-[#008DA2] p-2"
                         containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg"
                         handleStoreImage={handleStoreImage}
+                        fieldValues={formik.values}
                     />
                 ))}
                 <div className="flex">

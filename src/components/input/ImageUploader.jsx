@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from 'prop-types';
 
-const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
+const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => {
     const [files, setFiles] = useState(null);
     const fileRef = useRef(null);
     const [imagePercentage, setImagePercentage] = useState(null);
-   
+
 
     useEffect(() => {
         if (files) {
             handleStoreImage(files, fieldId).then((url) => {
-                setImagePercentage(100); 
+                setImagePercentage(100);
                 console.log(`File uploaded to ${url}`);
             });
         }
     }, [files]);
-
+    console.log(imagePercentage)
     return (
         <div className=' '>
             <input
@@ -32,7 +32,7 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
                 onClick={() => fileRef.current.click()}
                 className='uppercase hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 border-sky-700'
             >
-                {imagePercentage === 100 ? 'Uploaded' : 'Add File'}
+                {fieldValues[id] ? 'Uploaded' : 'Add File'}
             </button>
         </div>
     );
@@ -41,9 +41,10 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
 ImageUploader.propTypes = {
     id: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['text', 'number', 'date', 'radio', 'file', 'checkbox']).isRequired,
-    fieldId: PropTypes.string.isRequired, 
+    fieldId: PropTypes.string.isRequired,
     handleStoreImage: PropTypes.func.isRequired,
-   
+    fieldValues: PropTypes.object,
+
 };
 
 export default ImageUploader;

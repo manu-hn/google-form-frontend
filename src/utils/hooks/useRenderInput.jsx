@@ -1,7 +1,9 @@
 import ImageUploader from '@/components/input/ImageUploader';
 
 
+
 const useRenderInput = () => {
+  
     const renderInput = (type, classNames, id, value, placeholder, onChange, onBlur, options, handleStoreImage, email) => {
         switch (type) {
             case 'text':
@@ -32,9 +34,9 @@ const useRenderInput = () => {
                 );
             case 'file':
                 return (
-                    <ImageUploader type={type} id={id} fieldId={id} handleStoreImage={handleStoreImage} />
+                    <ImageUploader type={type} id={id} fieldId={id} handleStoreImage={handleStoreImage}  />
                 );
-           
+
             default:
                 return null;
         }

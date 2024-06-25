@@ -1,65 +1,4 @@
 
-
-export const HEAD_TEXT = `Candidate Application Form - VYZEN`;
-
-export const DESCRIPTIVE_HEADER_TEXT = `Please fill out the following details accurately to apply for the position..
- Ensure you upload necessary documents where required. Fields marked with an asterisk (*) are mandatory.`;
-
-export const SUBMIT_DESCRIPTIVE_TEXT = `The name, email address and photo associated with your Google Account will be recorded when you upload files and submit this form`;
-export const REQUIRED_INDICATE_TEXT = `* Indicates required question`
-
-export const validate = values => {
-    const errors = {};
-
-    if (!values.firstName) {
-        errors.firstName = 'This is a required question';
-    }
-
-    if (!values.lastName) {
-        errors.lastName = 'This is a required question';
-    }
-
-    if (!values.contactNumber) {
-        errors.contactNumber = 'This is a required question';
-    }
-    if (!values.alternateContactNumber) {
-        errors.alternateContactNumber = 'This is a required question';
-    }
-
-    if (!values.emailID) {
-        errors.emailID = 'This is a required question';
-    } else if (!/\S+@\S+\.\S+/.test(values.emailID)) {
-        errors.emailID = 'Email ID is invalid';
-    }
-
-    if (!values.dateOfBirth) {
-        errors.dateOfBirth = 'This is a required question';
-    }
-
-    if (!values.nationality) {
-        errors.nationality = 'This is a required question';
-    }
-
-    if (!values.emailChecked) {
-        errors.emailChecked = 'This is a required question';
-    }
-
-    if (!values.currentResidentialAddress) {
-        errors.currentResidentialAddress = 'This is a required question';
-    }
-    if (!values.permanentResidentialAddress) {
-        errors.permanentResidentialAddress = 'This is a required question';
-    }
-    if (!values.currentLocation) {
-        errors.currentLocation = 'This is a required question';
-    }
-    if (!values.preferredLocation) {
-        errors.preferredLocation = 'This is a required question';
-    }
-    return errors;
-};
-
-
 export const FIRST_PAGE_FIELDS = [
 
     {
@@ -508,6 +447,316 @@ export const EDUCATIONAL_DETAILS = [
         options: ['YES', 'NO'],
     },
 ]
+
+
+
+export const EMPLOYMENT_DETAILS = [
+    {
+        id: `totalExperience`,
+        label: `Total Experience`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter your total years & months of experience.`,
+        required: true,
+
+    },
+    {
+        id: `organizationName`,
+        label: `Organization Name`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter the name of the current organization you have worked for.`,
+        required: true,
+
+    },
+    {
+        id: `jobTitle`,
+        label: `Designation/Job Title`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter your current designation or job title.`,
+        required: true,
+
+    },
+    {
+        id: `empStartDate`,
+        label: `Employment Start Date`,
+        type: 'date',
+        placeholder: `Your Answer`,
+        description: `Description: Select the start date of your employment.`,
+        required: true,
+
+    },
+    {
+        id: `empEndDate`,
+        label: `Employment End Date`,
+        type: 'date',
+        placeholder: `Your Answer`,
+        description: `Description: Select the end date of your employment (if applicable).`,
+        required: true,
+
+    },
+    {
+        id: `rolesAndResponsibilities`,
+        label: `List down your Roles and Responsibilities `,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Describe your roles and responsibilities in the organization.`,
+        required: true,
+
+    },
+    {
+        id: `reasonForLeaving`,
+        label: ` Reason for Leaving `,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Provide the reason for leaving your previous or current job.`,
+        required: true,
+
+    },
+    {
+        id: `currentCTC`,
+        label: ` Current CTC `,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter your current Cost to Company (CTC).Format : INR 100000 (Annual CTC)`,
+        required: true,
+
+    },
+    {
+        id: `expectedCTC`,
+        label: ` Expected CTC`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter your expected Cost to Company (CTC). Format : INR 100000 (Annual CTC)`,
+        required: true,
+
+    },
+    {
+        id: `noticePeriod`,
+        label: ` Notice Period`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: `Description: Enter the number of days in your notice period. , Example : 60 Days`,
+        required: true,
+
+    },
+]
+
+export const DOCUMENTS_RELATED_TO_EXPERIENCE = [
+    {
+        id: `salarySlips`,
+        label: `Please upload your Salary Slips/Payslips (Last 3 Months) for your total experience`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `bankStatements`,
+        label: `Please upload your Bank Statements (Last 3 Months) for your total experience`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `offerLetter`,
+        label: `Upload Offer Letter/Joining Letter/Employment Agreement from organization(s) for your total experience`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `incrementLetter`,
+        label: `Upload increment letter from from organization(s) for your total experience`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `experienceCertificate`,
+        label: `Upload Relieving Letter/Experience Certificates / Acceptance of resignation from present employment`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+];
+
+
+export const CURRENT_OFFERS = [
+    {
+        id: `servingNoticePeriod`,
+        label: `Are you Currently Serving your Notice Period?`,
+        type: 'radio',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+        options: ['YES', 'NO'],
+
+    },
+    {
+        id: `lastWorkingDate`,
+        label: `Mention your Last working Date`,
+        type: 'date',
+        placeholder: `Your Answer`,
+        description: `Description: If you selected 'Yes' above, enter your last working date in the organization.`,
+        required: true,
+    },
+    {
+        id: `anyExistingOffers`,
+        label: `Do you hold any existing offers that we should be aware of?`,
+        type: 'radio',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+        options: ['YES', "NO", 'MAYBE'],
+    },
+    {
+        id: `existingOfferOrganizationName`,
+        label: `If yes, enter the name of the organization you hold an offer from`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `proofOfExistingOffer`,
+        label: `Please upload the offer letter or proof of offer you hold`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `haveYouAcceptedTheOffer`,
+        label: `Please confirm if you have accepted the offer you hold?`,
+        type: 'file',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+       
+
+    },
+    {
+        id: `dateAcceptedTheOffer`,
+        label: `Please mention the date you have to accept the Offer you hold or the date you have Accepted the Offer`,
+        type: 'date',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+    },
+    {
+        id: `proposedCTC`,
+        label: `If no, mention the expected/proposed CTC you are offered`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+];
+
+
+export const EMPLOYMENT_VERIFICATION_REFERENCE_CHECK = [
+    {
+        id: `referenceContactPersonName`,
+        label: `Please mention One reference contact person name from this organization`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+    {
+        id: `referenceContactPersonDesignation`,
+        label: `One reference contact person's Designation from this organization`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+    {
+        id: `referenceContactPersonContact`,
+        label: `One reference contact person's Contact No from this organization`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+    {
+        id: `referenceContactPersonEmailID`,
+        label: `One reference contact person's Email ID from this organization`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+    {
+        id: `referenceContactPersonProfessionalRelationship`,
+        label: `One reference contact person's - Pleasestate the Professional Relationship with the mentioned reference contact person's`,
+        type: 'text',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+    {
+        id: `referenceCheckDate`,
+        label: `Please mention the date we can Reference Check`,
+        type: 'date',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+
+
+    },
+];
+
+
+export const VERIFICATION_CONSENT = [
+    {
+        id: `employmentVerificationConsent`,
+        label: `Employment Verification Consent`,
+        type: 'radio',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+        options: ['YES', "NO", 'MAYBE'],
+
+    },
+    {
+        id: `authorizationToContactReferences`,
+        label: `Authorization to contact previous employers and references`,
+        type: 'radio',
+        placeholder: `Your Answer`,
+        description: ``,
+        required: true,
+        options: ['YES', "NO", 'MAYBE'],
+
+    },
+];
+
 
 export const ACKNOWLEDGEMENT_CONSENT = [
     {

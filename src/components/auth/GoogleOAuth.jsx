@@ -1,4 +1,4 @@
-import { config } from '@/constants/StateValues';
+import { config } from '@/constants/Config.js';
 import { app } from '@/constants/firebase';
 import { loginUserFailure, loginUserInitiated, loginUserSuccessful } from '@/store/slices/userSlice';
 import axios from 'axios';

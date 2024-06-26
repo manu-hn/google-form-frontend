@@ -12,8 +12,8 @@ import { DOCS_ARRAY } from "@/constants/Config.js";
 import { initialValues } from "@/constants/StateValues";
 import useFormikValidator from '@/utils/hooks/useFormikValidator';
 
-const GoogleForm = ({ formDetails,  index, setIndexValue, pageTitle, isFresher }) => {
-    const { userInfo } = useSelector(store => store.user);
+const GoogleForm = ({ formDetails, index, setIndexValue, pageTitle, isFresher }) => {
+    const { userInfo, isFormSubmitted } = useSelector(store => store.user);
     const { submitFormData } = useSubmitFormData();
     const { validate } = useFormikValidator()
 
@@ -161,7 +161,7 @@ const GoogleForm = ({ formDetails,  index, setIndexValue, pageTitle, isFresher }
                     {index === currentDocsLength - 1 && (
                         <button type="submit"
                             className="bg-[#1496A9] px-10 py-2 rounded-md mx-4 text-white font-[500]">
-                            Submit
+                            {isFormSubmitted ? "Submitting" : "Submit"}
                         </button>
                     )}
                     <div className="flex items-center gap-4">
@@ -169,7 +169,7 @@ const GoogleForm = ({ formDetails,  index, setIndexValue, pageTitle, isFresher }
                             type="range"
                             value={index}
                             min={0}
-                            max={currentDocsLength - 1}
+                            max={10}
                             onChange={(e) => setIndexValue(parseInt(e.target.value))}
                         />
                         <span>

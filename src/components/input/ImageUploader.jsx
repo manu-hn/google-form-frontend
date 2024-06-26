@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => {
     const [files, setFiles] = useState(null);
     const fileRef = useRef(null);
-    const [imagePercentage, setImagePercentage] = useState(null);
-
+    const [imagePercentage, setImagePercentage] = useState(0);
 
     useEffect(() => {
         if (files) {
@@ -32,7 +31,7 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => 
                 onClick={() => fileRef.current.click()}
                 className='uppercase hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 border-sky-700'
             >
-                {fieldValues[id] ? 'Uploaded' : 'Add File'}
+                {fieldValues[id] !== 'N/A' ? 'Uploaded' : 'Add File'}
             </button>
         </div>
     );

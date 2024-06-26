@@ -123,6 +123,5 @@ export const DOCS_ARRAY = [
 ];
 
 
-export const FORM_SUBMISSION_MESSAGE = `Form Submitted Successfully !`;
 export const AUTO_HIDE_DURATION = 3000;
 export const NAVIGATE_DURATION = 4000;

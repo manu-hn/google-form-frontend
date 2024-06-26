@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from 'prop-types';
+import UploadLogo from "@/assets/images/images.png";
 
-const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => {
+const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
     const [files, setFiles] = useState(null);
     const fileRef = useRef(null);
     const [imagePercentage, setImagePercentage] = useState(0);
@@ -29,9 +30,9 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => 
             <button
                 type='button' // Changed to button to prevent form submission
                 onClick={() => fileRef.current.click()}
-                className='uppercase hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 text-xs md:text-sm border-sky-700'
-            > Add File
-                {/* {fieldValues[id] !== 'N/A' ? 'Uploaded' : 'Add File'} */}
+                className='uppercase flex hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 text-xs md:text-sm border-sky-700'
+            >
+              <img className="w-6 mx-2 h-5 " src={UploadLogo} alt="Upload Logo" /> Add File
             </button>
         </div>
     );

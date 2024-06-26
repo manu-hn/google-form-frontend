@@ -104,7 +104,7 @@ const GoogleForm = ({ formDetails, index, setIndexValue, pageTitle, isFresher })
         <div className="w-[85%] md:w-[55%]">
             <form onSubmit={formik.handleSubmit}>
                 {pageTitle && (
-                    <h1 className="w-full bg-[#83D3E0] font-bold h-16 text-xs md:h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
+                    <h1 className="w-full bg-[#83D3E0] font-bold h-16 text-xs md:text-lg md:h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
                 )}
                 {index === 0 && (
                     <InputField

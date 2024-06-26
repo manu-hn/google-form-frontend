@@ -101,10 +101,10 @@ const GoogleForm = ({ formDetails, index, setIndexValue, pageTitle, isFresher })
     const currentDocsLength = filteredDocsArray.length;
 
     return (
-        <div className="w-3/4 md:w-[55%]">
+        <div className="w-[85%] md:w-[55%]">
             <form onSubmit={formik.handleSubmit}>
                 {pageTitle && (
-                    <h1 className="w-full bg-[#83D3E0] font-bold h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
+                    <h1 className="w-full bg-[#83D3E0] font-bold h-16 text-xs md:h-24 px-6 rounded-t-xl flex items-center -mb-6 z-10">{pageTitle}</h1>
                 )}
                 {index === 0 && (
                     <InputField
@@ -143,37 +143,40 @@ const GoogleForm = ({ formDetails, index, setIndexValue, pageTitle, isFresher })
                         error={formik.errors[field.id]}
                         touched={formik.touched[field.id]}
                         required={field.required}
-                        classNames="my-2 border-b-2 w-2/4 outline-none focus:border-b-[#008DA2] p-2"
-                        containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg"
+                        classNames="my-2 border-b-2 w-2/4 outline-none focus:border-b-[#008DA2] p-2 placeholder:text-xs sm:placeholder:text-sm"
+                        containerClasses="flex flex-col bg-white my-2 p-6 border border-gray-300 rounded-lg "
                         handleStoreImage={handleStoreImage}
                         fieldValues={formik.values}
                     />
                 ))}
-                <div className="flex">
+                <div className="flex justify-start">
                     {index > 0 && (
-                        <Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
+                        <Button classNames="px-6 py-2 rounded-md text-[#008DA2] text-xs md:text-sm bg-white mx-1 font-[450] shadow-md border-b border-gray-400"
                             handleClick={handlePrevChange} isDisabled={index === 0} title="Back" />
                     )}
                     {index < currentDocsLength - 1 && (
-                        <Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
+                        <Button classNames="px-6 py-2 rounded-md text-[#008DA2] text-xs md:text-sm bg-white mx-1 font-[450] shadow-md border-b border-gray-400"
                             handleClick={handleNextChange} isDisabled={index === currentDocsLength - 1} title="Next" />
                     )}
                     {index === currentDocsLength - 1 && (
                         <button type="submit"
-                            className="bg-[#1496A9] px-10 py-2 rounded-md mx-4 text-white font-[500]">
+                            className="bg-[#1496A9] px-4 py-2 rounded-md text-xs md:text-sm mx-2 text-white font-[500]">
                             {isFormSubmitted ? "Submitting" : "Submit"}
                         </button>
                     )}
-                    <div className="flex items-center gap-4">
-                        <input
+                    <div className=" flex  items-center gap-4 ">
+                        <input className='w-full  '
                             type="range"
                             value={index}
                             min={0}
                             max={currentDocsLength - 1}
                             onChange={(e) => setIndexValue(parseInt(e.target.value))}
                         />
-                        <span>
+                        <span className='text-xs hidden md:block'>
                             Page {index + 1} of 11
+                        </span>
+                        <span className='text-xs block md:hidden'>
+                             {index + 1} /  11
                         </span>
                     </div>
                 </div>

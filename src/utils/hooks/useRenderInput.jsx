@@ -7,14 +7,14 @@ const useRenderInput = () => {
             case 'number':
             case 'date':
                 return (
-                    <input className={classNames} id={id} type={type} placeholder={placeholder}
+                    <input className={`${classNames}  text-xs sm:text-sm`} id={id} type={type} placeholder={placeholder} 
                         value={value} onChange={onChange} onBlur={onBlur} />
                 );
             case 'radio':
                 return (
-                    <div>
+                    <div className='w-full'>
                         {options.map((option, index) => (
-                            <div key={index} className='w-64 flex justify-start'>
+                            <div key={index} className='w-full flex justify-start  my-2 md:my-1'>
                                 <input className="mr-3" type="radio" id={`${id}-${option}`} name={id}
                                     value={option} checked={value === option} onChange={onChange} onBlur={onBlur} />
                                 <label className='text-[0.65rem] sm:text-sm' htmlFor={`${id}-${option}`}>{option}</label>

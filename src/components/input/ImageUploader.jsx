@@ -29,9 +29,9 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage, fieldValues }) => 
             <button
                 type='button' // Changed to button to prevent form submission
                 onClick={() => fileRef.current.click()}
-                className='uppercase hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 border-sky-700'
-            >
-                {fieldValues[id] !== 'N/A' ? 'Uploaded' : 'Add File'}
+                className='uppercase hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 text-xs md:text-sm border-sky-700'
+            > Add File
+                {/* {fieldValues[id] !== 'N/A' ? 'Uploaded' : 'Add File'} */}
             </button>
         </div>
     );

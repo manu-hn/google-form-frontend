@@ -169,7 +169,7 @@ const GoogleForm = ({ formDetails, index, setIndexValue, pageTitle, isFresher })
                             type="range"
                             value={index}
                             min={0}
-                            max={10}
+                            max={currentDocsLength - 1}
                             onChange={(e) => setIndexValue(parseInt(e.target.value))}
                         />
                         <span>

@@ -4,6 +4,7 @@ const initialState = {
     userInfo: [],
     isLoading: false,
     isAuthenticated: false,
+    isFresher: false,
 }
 
 const userSlice = createSlice({
@@ -29,11 +30,18 @@ const userSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.userInfo = null;
+        },
+        arYouFresher: (state, action) => {
+            if (action.payload === 'YES') {
+                state.isFresher = true;
+            } else {
+                state.isFresher = false;
+            }
         }
     }
 });
 
 
 
-export const { loginUserFailure, loginUserInitiated, loginUserSuccessful, logoutUser } = userSlice.actions;
+export const { loginUserFailure, loginUserInitiated, loginUserSuccessful, logoutUser, arYouFresher } = userSlice.actions;
 export default userSlice.reducer;

@@ -32,7 +32,7 @@ const GoogleOAuth = ({ title, classNames }) => {
 
     async function userSignIn(userDetails) {
         const userData = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/google-sign-in`, JSON.stringify(userDetails), config);
-        console.log(userData)
+       console.log(userData)
         dispatch(loginUserSuccessful(userDetails));
         navigate('/form')
     }

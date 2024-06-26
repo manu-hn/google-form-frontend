@@ -90,12 +90,13 @@
 10. **IndexedDB**
     - A browser-based database web API for storing data.
 
-
-
 By following these instructions, you will have your frontend application set up and running smoothly. If you have any questions or encounter any issues, feel free to reach out for support.
 
+### Additional Features:
+
+I have implemented Google Sign-In to replicate a Google Form-like feature. I also made use of Firebase Storage to store images, retrieving their public URL links and storing them in MongoDB.
 
 ## Note
 
-The frontend application is deployed on Vercel. The frontend interacts with the backend server deployed on render.com. Due to the free version of Render, the submit process may take some time, up to 3 minutes, to respond. Please be patient while using the deployed application.
-
+- The frontend application is deployed on Vercel. The frontend interacts with the backend server deployed on Render.com. Due to the free version of Render, the submit process may take up to 3 minutes to respond. Please be patient while using the deployed application.
+- Please make sure your local machine has `Node.js` and `npm` installed.

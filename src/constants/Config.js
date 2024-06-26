@@ -16,7 +16,7 @@ export const REQUIRED_INDICATE_TEXT = `* Indicates required question`
 export const validate = values => {
     const errors = {};
 
-    const requiredFields = [
+    const fresherRequiredFields = [
         'firstName', 'lastName', 'contactNumber', 'alternateContactNumber',
         'emailID', 'dateOfBirth', 'nationality', 'currentResidentialAddress',
         'permanentResidentialAddress', 'currentLocation', 'preferredLocation',
@@ -27,16 +27,22 @@ export const validate = values => {
         'passPercentage', 'proofOfEducationCompletion', 'anyCertifications',
         'certificationsObtained', 'certificationIssuingAuthority', 'certificationCompletionDate',
         'proofOfCertification', 'dateOfJoin', 'fresher', 'backgroundChecks',
-        'drugAndAlcoholTest', 'criminalCases', 'acknowledge', 'totalExperience',
-        'organizationName', 'jobTitle', 'empStartDate', 'empEndDate',
-        'rolesAndResponsibilities', 'reasonForLeaving', 'currentCTC', 'expectedCTC',
-        'noticePeriod', 'salarySlips', 'bankStatements', 'offerLetter',
-        'incrementLetter', 'experienceCertificate', 'servingNoticePeriod', 'lastWorkingDate',
-        'anyExistingOffers', 'existingOfferOrganizationName', 'proofOfExistingOffer',
-        'haveYouAcceptedTheOffer', 'dateAcceptedTheOffer', 'proposedCTC'
+        'drugAndAlcoholTest', 'criminalCases', 'acknowledge',
+
+
+
+
     ];
 
-    requiredFields.forEach(field => {
+    // const expRequiredFields = [
+    //     'totalExperience', 'organizationName', 'jobTitle', 'empStartDate', 'empEndDate',
+    //     'rolesAndResponsibilities', 'reasonForLeaving', 'currentCTC', 'expectedCTC',
+    //     'noticePeriod', 'salarySlips', 'bankStatements', 'offerLetter',
+    //     'incrementLetter', 'experienceCertificate', 'servingNoticePeriod', 'lastWorkingDate',
+    //     'anyExistingOffers', 'existingOfferOrganizationName', 'proofOfExistingOffer',
+    //     'haveYouAcceptedTheOffer', 'dateAcceptedTheOffer', 'proposedCTC'
+    // ]
+    fresherRequiredFields.forEach(field => {
         if (!values[field]) {
             errors[field] = 'This is a required question';
         }

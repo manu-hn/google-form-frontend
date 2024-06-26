@@ -8,17 +8,18 @@ import { clearData, loadData, storeData } from '@/utils/indexdb/IndexDb.js';
 import useSubmitFormData from "@/utils/hooks/useSubmitFormData";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "@/constants/firebase";
-import { validate } from "@/constants/Config.js";
+import { DOCS_ARRAY } from "@/constants/Config.js";
 import { initialValues } from "@/constants/StateValues";
+import useFormikValidator from '@/utils/hooks/useFormikValidator';
 
-const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }) => {
+const GoogleForm = ({ formDetails,  index, setIndexValue, pageTitle, isFresher }) => {
     const { userInfo } = useSelector(store => store.user);
     const { submitFormData } = useSubmitFormData();
+    const { validate } = useFormikValidator()
 
     const storeFormData = async (values, currentIndex) => {
         try {
             await storeData({ id: 'formData', formValues: values, index: currentIndex });
-            // console.log('Data stored:', { id: 'formData', formValues: values, index: currentIndex });
         } catch (error) {
             console.error('Error storing form data:', error);
         }
@@ -38,20 +39,17 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
             }
         },
     });
+
     useEffect(() => {
         const fetchData = async () => {
             const savedData = await loadData();
-            // console.log('Loaded data:', savedData);
-
             if (savedData.length > 0) {
-               
                 formik.setValues(savedData[savedData.length - 1].formValues);
                 setIndexValue(savedData[0].index);
             }
         };
 
         fetchData();
-        console.log('Fetched Data', formik.values)
     }, []);
 
     useEffect(() => {
@@ -82,7 +80,6 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
                         resolve(downloadUrl);
                         formik.setFieldValue(fieldId, downloadUrl);
-                        console.log(downloadUrl);
                     });
                 }
             );
@@ -96,6 +93,12 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
     const handlePrevChange = () => {
         setIndexValue((prevVal) => prevVal - 1);
     };
+
+    const filteredDocsArray = isFresher
+        ? DOCS_ARRAY.filter((_, idx) => idx < 5 || idx === 10)
+        : DOCS_ARRAY;
+
+    const currentDocsLength = filteredDocsArray.length;
 
     return (
         <div className="w-3/4 md:w-[55%]">
@@ -147,14 +150,15 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                     />
                 ))}
                 <div className="flex">
-                    {index > 0 && (<Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
-                        handleClick={handlePrevChange} isDisabled={index === 0} title="Back" />
-                    )}
-                    {index < docsLength - 1 && (
+                    {index > 0 && (
                         <Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
-                            handleClick={handleNextChange} isDisabled={index === docsLength - 1} title="Next" />
+                            handleClick={handlePrevChange} isDisabled={index === 0} title="Back" />
                     )}
-                    {index === docsLength - 1 && (
+                    {index < currentDocsLength - 1 && (
+                        <Button classNames="px-8 py-2 rounded-md text-[#008DA2] bg-white mx-2 font-[450] shadow-md border-b border-gray-400"
+                            handleClick={handleNextChange} isDisabled={index === currentDocsLength - 1} title="Next" />
+                    )}
+                    {index === currentDocsLength - 1 && (
                         <button type="submit"
                             className="bg-[#1496A9] px-10 py-2 rounded-md mx-4 text-white font-[500]">
                             Submit
@@ -165,11 +169,11 @@ const GoogleForm = ({ formDetails, docsLength, index, setIndexValue, pageTitle }
                             type="range"
                             value={index}
                             min={0}
-                            max={docsLength - 1}
+                            max={currentDocsLength - 1}
                             onChange={(e) => setIndexValue(parseInt(e.target.value))}
                         />
                         <span>
-                            Page {index + 1} of {docsLength}
+                            Page {index + 1} of 11
                         </span>
                     </div>
                 </div>
@@ -184,6 +188,7 @@ GoogleForm.propTypes = {
     docsLength: PropTypes.number.isRequired,
     setIndexValue: PropTypes.func.isRequired,
     pageTitle: PropTypes.string,
+    isFresher: PropTypes.bool.isRequired,
 };
 
 export default GoogleForm;

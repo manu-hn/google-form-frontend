@@ -49,6 +49,7 @@ export const initialValues = {
     proofOfCertification: '',
     dateOfJoin: '',
     fresher: '',
+
     totalExperience: 'N/A',
     organizationName: 'N/A',
     jobTitle: 'N/A',

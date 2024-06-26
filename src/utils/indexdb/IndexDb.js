@@ -12,7 +12,7 @@ const dbPromise = openDB('vyzen-form-db', 1, {
 // Store data in IndexedDB
 export async function storeData(data) {
     try {
-        console.log('Storing data:', data);
+        console.log('Storing data:');
         const db = await dbPromise;
         const tx = db.transaction('formData', 'readwrite');
         const store = tx.objectStore('formData');
@@ -28,7 +28,7 @@ export async function storeData(data) {
 export async function loadData() {
     try {
         const db = await dbPromise;
-        
+
         return await db.getAll('formData');
     } catch (error) {
         console.error('Error loading data:', error);

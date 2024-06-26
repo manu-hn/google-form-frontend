@@ -5,6 +5,7 @@ const initialState = {
     isLoading: false,
     isAuthenticated: false,
     isFresher: false,
+    isFormSubmitted: false,
 }
 
 const userSlice = createSlice({
@@ -37,11 +38,22 @@ const userSlice = createSlice({
             } else {
                 state.isFresher = false;
             }
-        }
+        },
+        formSubmissionStarted: (state) => {
+            state.isFormSubmitted = true;
+        },
+        formSubmissionSuccess: (state) => {
+            state.isFormSubmitted = false;
+        },
+        formSubmissionFailure: (state) => {
+            state.isFormSubmitted = false;
+        },
     }
 });
 
 
 
-export const { loginUserFailure, loginUserInitiated, loginUserSuccessful, logoutUser, arYouFresher } = userSlice.actions;
+export const { loginUserFailure, loginUserInitiated, loginUserSuccessful, logoutUser,
+    arYouFresher,
+    formSubmissionFailure, formSubmissionStarted, formSubmissionSuccess } = userSlice.actions;
 export default userSlice.reducer;

@@ -28,7 +28,7 @@ const ImageUploader = ({ type, id, fieldId, handleStoreImage }) => {
                 id={id}
             />
             <button
-                type='button' // Changed to button to prevent form submission
+                type='button' 
                 onClick={() => fileRef.current.click()}
                 className='uppercase flex hover:shadow-lg disabled:opacity-80 rounded text-sky-500 border px-4 py-2 text-xs md:text-sm border-sky-700'
             >
